@@ -540,7 +540,7 @@ namespace Xerath
             if (R.Level == 0) return;
             var menuItem = Config.Item(R.Slot + "RangeM").GetValue<Circle>();
             if (menuItem.Active)
-                Render.Circle.DrawCircle(Player.Position, R.Range, menuItem.Color, 1, true);
+                Render.Circle.DrawCircle(Player.Position, R.Range, menuItem.Color, 5); 
         }
 
         private static void Drawing_OnDraw(EventArgs args)
