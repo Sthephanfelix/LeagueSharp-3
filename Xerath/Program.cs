@@ -325,7 +325,8 @@ namespace Xerath
             {
                 if (Q.IsCharging)
                 {
-                    Q.Cast(qTarget, false, false);
+                    if(Player.Distance(qTarget, false) + 20 > Q.ChargedMaxRange ? Q.ChargedMaxRange <= Q.Range : Player.Distance(qTarget, false) + 20 <= Q.Range)
+                     Q.Cast(qTarget, false, false);
                 }
                 else if (!useW || !W.IsReady() || Player.Distance(qTarget) > W.Range)
                 {
@@ -333,7 +334,7 @@ namespace Xerath
                 }
             }
 
-            if (wTarget != null && useW && W.IsReady())
+            if (wTarget != null && useW && W.IsReady() && W.GetPrediction(wTarget).Hitchance >= HitChance.High)
                 W.Cast(wTarget, false, true);
         }
 
